@@ -41,3 +41,46 @@ class TestModel(ModelBase):
     @property
     def Scores(self) -> List[int]:
         return self._lstScores.GetValue()
+
+class TestModelClass(ModelBase):
+    def __init__(self, nScore: int = 4, *args, **kwargs) -> None:
+        super().__init__()
+
+        IntegerProperty(self, nScore, "_nScore")
+        ModelProperty(self, TestModel(*args, **kwargs), "_mTestModel")
+
+    @property
+    def Score(self) -> int:
+        return self._nScore.GetValue()
+
+    @Score.setter
+    def Score(self, nNewScore: int) -> None:
+        self._nScore.SetValue(nNewScore)
+
+    @property
+    def TestModel(self) -> TestModel:
+        return self._mTestModel.GetValue()
+
+
+class TestModelListClass(ModelBase):
+    def __init__(self, fScore: float = 8.5) -> None:
+        super().__init__()
+
+        FloatProperty(self, fScore, "_fScore")
+        ModelListProperty(self, [], "_mModels")
+        
+    @property
+    def Score(self) -> float:
+        return self._fScore.GetValue()
+
+    @Score.setter
+    def Score(self, fNewScore: float) -> None:
+        self._fScore.SetValue(fNewScore)
+
+    @property
+    def Models(self) -> List[TestModelClass]:
+        return self._mModels.GetValue()
+
+ModelBase.mSubModels[TestModel.__name__] = TestModel
+ModelBase.mSubModels[TestModelClass.__name__] = TestModelClass
+ModelBase.mSubModels[TestModelListClass.__name__] = TestModelListClass
