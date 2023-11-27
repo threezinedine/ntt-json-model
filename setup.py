@@ -6,9 +6,11 @@ def load_readme():
 
 setup(
     name='ntt-json-model',
-    version='1.0.0',
+    version='1.0.1',
     packages=find_packages(),
     install_requires=[
+        "ntt-signal",
+        "ntt-observable-list"
     ],
     author='threezinedine',
     author_email='threezinedine@email.com',
