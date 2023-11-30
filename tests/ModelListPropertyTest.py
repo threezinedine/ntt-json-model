@@ -43,6 +43,7 @@ class ModelListPropertyTest(unittest.TestCase):
                             "_nValue": 3,
                             "_fTemp": 3.2,
                             "_strName": "ThaoNguyenThe",
+                            "_bIsActive": False,
                             "_lstScores": []
                         }
                     },
@@ -54,6 +55,7 @@ class ModelListPropertyTest(unittest.TestCase):
                             "_nValue": 3,
                             "_fTemp": 3.2,
                             "_strName": "ThaoNguyenThe",
+                            "_bIsActive": False,
                             "_lstScores": [3, 2]
                         }
                     }
@@ -74,6 +76,7 @@ class ModelListPropertyTest(unittest.TestCase):
                         "_nValue": 3,
                         "_fTemp": 3.2,
                         "_strName": "ThaoNguyenThe",
+                        "_bIsActive": False,
                         "_lstScores": []
                     }
                 },
@@ -85,6 +88,7 @@ class ModelListPropertyTest(unittest.TestCase):
                         "_nValue": 3,
                         "_fTemp": 3.2,
                         "_strName": "ThaoNguyenThe",
+                        "_bIsActive": False,
                         "_lstScores": [3, 2]
                     }
                 }
@@ -119,6 +123,7 @@ class ModelListPropertyTest(unittest.TestCase):
                         "_nValue": 3,
                         "_fTemp": 3.2,
                         "_strName": "ThaoNguyenThe",
+                        "_bIsActive": False,
                         "_lstScores": []
                     }
                 },
@@ -130,7 +135,8 @@ class ModelListPropertyTest(unittest.TestCase):
                         "_nValue": 3,
                         "_fTemp": 3.2,
                         "_strName": "ThaoNguyenThe",
-                        "_lstScores": [3, 2]
+                        "_lstScores": [3, 2],
+                        "_bIsActive": False,
                     }
                 }
             ]

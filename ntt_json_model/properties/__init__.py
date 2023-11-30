@@ -4,3 +4,4 @@ from .StrProperty import *
 from .ListProperty import *
 from .ModelProperty import *
 from .ModelListProperty import *
+from .BoolProperty import *

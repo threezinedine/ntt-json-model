@@ -13,6 +13,7 @@ class TestModel(ModelBase):
         FloatProperty(self, fTemp, "_fTemp")
         StrProperty(self, strName, "_strName")
         ListProperty(self, lstScores, "_lstScores")
+        BoolProperty(self, False, "_bIsActive")
 
     @property
     def Value(self) -> int:
@@ -41,6 +42,14 @@ class TestModel(ModelBase):
     @property
     def Scores(self) -> List[int]:
         return self._lstScores.GetValue()
+
+    @property
+    def IsActive(self) -> bool:
+        return self._bIsActive.GetValue()
+    
+    @IsActive.setter
+    def IsActive(self, bIsActive: bool) -> None:
+        self._bIsActive.SetValue(bIsActive) 
 
 class TestModelClass(ModelBase):
     def __init__(self, nScore: int = 4, *args, **kwargs) -> None:

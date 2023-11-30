@@ -25,13 +25,14 @@ class ModelBase(Signal, IModel):
 
         for strAttributeName in self._strDataAttributeNames:
             attribute: Property = getattr(self, strAttributeName)
-            if isinstance(attribute, FloatProperty) \
-                    or isinstance(attribute, IntegerProperty) \
-                    or isinstance(attribute, ListProperty) \
-                    or isinstance(attribute, StrProperty):
-                dictData[strAttributeName] = attribute.GetValue()
-            elif isinstance(attribute, ModelProperty):
+            if isinstance(attribute, ModelProperty):
                 dictData[strAttributeName] = attribute.GetValue().ToDict()
+            # elif isinstance(attribute, FloatProperty) \
+            #         or isinstance(attribute, IntegerProperty) \
+            #         or isinstance(attribute, ListProperty) \
+            #         or isinstance(attribute, StrProperty):
+            else:
+                dictData[strAttributeName] = attribute.GetValue()
 
         for strAttributeName in self._strModelDataAttributeNames:
             dictData[strAttributeName] = []

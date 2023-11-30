@@ -64,6 +64,21 @@ class ModelTest(unittest.TestCase):
         self.model.Connect(testCallback)
 
         self.model.Name = "Hello"
+        testCallback.assert_not_called()
+
+    def test_WhenChangeBoolPropertyWithInt_ThenModelIsEmitted(self):
+        testCallback = Mock()
+        self.model.Connect(testCallback)
+
+        self.model.IsActive = True
+
+        testCallback.assert_called_once()
+
+    def test_WhenChangeBoolDataWithoutChangingValueActually_ThenNoEmitted(self):
+        testCallback = Mock()
+        self.model.Connect(testCallback)
+
+        self.model.IsActive = False
 
         testCallback.assert_not_called()
 
@@ -80,8 +95,10 @@ class ModelTest(unittest.TestCase):
         self.model.Value = 3
         self.model.Temp = 45
         self.model.Scores.append(4)
+        self.model.IsActive = True
 
         dictData = self.model.ToDict()
+        print(json.dumps(dictData, indent=2))
 
         self.assertDictEqual(
             dictData,
@@ -90,7 +107,8 @@ class ModelTest(unittest.TestCase):
                 "_nValue": 3,
                 "_fTemp": 45.0,
                 "_strName": "Testing",
-                "_lstScores": [4]
+                "_lstScores": [4],
+                "_bIsActive": True,
             }
         )
 
@@ -101,6 +119,7 @@ class ModelTest(unittest.TestCase):
             "_fTemp": 45.0,
             "_strName": "Testing",
             "_lstScores": [4],
+            "_bIsActive": True,
         }
         testCallback = Mock()
         self.model.Connect(testCallback)
@@ -120,6 +139,7 @@ class ModelTest(unittest.TestCase):
             "_fTemp": 45.0,
             "_strName": "Testing",
             "_lstScores": [4],
+            "_bIsActive": True,
         }
         testCallback = Mock()
         self.model.Connect(testCallback)
@@ -141,6 +161,7 @@ class ModelTest(unittest.TestCase):
             "_nValue": 3,
             "_strName": "Testing",
             "_lstScores": [4],
+            "_bIsActive": True,
         }
 
         self.model.FromDict(dictData)
@@ -153,6 +174,7 @@ class ModelTest(unittest.TestCase):
             "_strName": "Testing",
             "_fTemp": 4.1,
             "_lstScores": [4],
+            "_bIsActive": True,
         }
 
         with self.assertRaises(InputDictError) as context:
@@ -167,6 +189,7 @@ class ModelTest(unittest.TestCase):
             "_fTemp": 45.0,
             "_strName": "Testing",
             "_lstScores": [4],
+            "_bIsActive": True,
         }
 
         with self.assertRaises(TargetClassError) as context:

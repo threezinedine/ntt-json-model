@@ -36,6 +36,7 @@ class ModelPropertyTest(unittest.TestCase):
                     "_nValue": 3,
                     "_fTemp": 3.2,
                     "_strName": "ThaoNguyenThe",
+                    "_bIsActive": False,
                     "_lstScores": [3, 2]
                 }
             }
@@ -53,6 +54,7 @@ class ModelPropertyTest(unittest.TestCase):
                 "_nValue": 3,
                 "_fTemp": 3.2,
                 "_strName": "ThaoNguyenThe",
+                "_bIsActive": False,
                 "_lstScores": [3, 2]
             }
         }
